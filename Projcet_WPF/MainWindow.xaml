@@ -1,0 +1,660 @@
+﻿<Window x:Class="Projcet_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projcet_WPF" 
+        mc:Ignorable="d"
+        Title="MainWindow" Height="495" Width="930">
+
+    <Window.Resources>
+    </Window.Resources>
+    <Viewbox Stretch="Uniform">
+        <Canvas Width="930" Height="480" >
+            <Canvas.Background>
+                <ImageBrush ImageSource="/Images/Moon1.png"></ImageBrush>
+            </Canvas.Background>
+            <StackPanel Canvas.Left="615" Canvas.Top="20" Height="200" Width="250" HorizontalAlignment="Left">
+                <StackPanel Orientation="Vertical">
+                    <Label Foreground="White" FontSize="7" FontFamily="Bookman Old Style" Margin="70 15 0 0">Selecte Date :</Label>
+                    <DatePicker FontSize="8" Width="100" Padding="5" Margin="0 10" SelectedDate="{Binding SelectedDate, Mode=TwoWay, UpdateSourceTrigger=Default}" />
+                </StackPanel>
+
+                <Button Width="100" Height="20" Click="ShowEvents" FontSize="8" FontFamily="Cambria" Background="White" BorderBrush="Black">Show and Update Events</Button>
+            </StackPanel>
+            
+            <StackPanel Canvas.Left="615" Canvas.Top="250">
+                <StackPanel Orientation="Horizontal">
+                    <Label Foreground="White" FontSize="7" FontFamily="Bookman Old Style">Title Event :</Label>
+                    <TextBox Text="{Binding NewEvent.Title ,
+                                           Mode=TwoWay ,        
+                                           UpdateSourceTrigger=Default}" Height="20" Width="250" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="8" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="15 5 10 2"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+
+                    <Label Foreground="White" FontSize="7" FontFamily="Bookman Old Style" Margin="0 15 0 0">enter year :</Label>
+                    <TextBox Text="{Binding NewEvent.StartDate.Year ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="30" Margin="5 10 0 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+
+                    <TextBox Text="{Binding NewEvent.StartDate.Month ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 0 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox Text="{Binding NewEvent.StartDate.Day ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 15 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <Label Foreground="White" FontSize="7" FontFamily="Bookman Old Style" Margin="0 10 0 0">enter Start time :</Label>
+                    <TextBox Text="{Binding NewEvent.StartTime.Hour ,
+                                            Mode=TwoWay , 
+                                            UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 0 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                        Background="White"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox Text="{Binding NewEvent.StartTime.Minute ,
+                                            Mode=TwoWay , 
+                                            UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 0 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                        Background="White"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox Text="{Binding NewEvent.StartTime.Second ,
+                                            Mode=TwoWay , 
+                                            UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 5 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                        Background="White"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBlock Text="," Foreground="White" Margin="0 10 5 0"/>
+                    <TextBox Text="{Binding NewEvent.DurationMinutes ,
+                                       Mode=TwoWay , 
+                                       UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 75 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                           Background="White"
+                                           BorderBrush="{TemplateBinding BorderBrush}"
+                                           BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Click="Add" Width="30" Height="15" Margin="5 10 0 10" FontSize="8" FontFamily="Cambria" Background="White" BorderBrush="Black" >Add</Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Foreground="White" FontSize="7" FontFamily="Bookman Old Style">Title Event :</Label>
+                    <TextBox Text="{Binding SelectedItem.Title ,
+                                           Mode=TwoWay      
+                                           }" Height="20" Width="250" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="8" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="2" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="15 5 10 2"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+
+                    <Label Foreground="White" FontSize="7" FontFamily="Bookman Old Style" Margin="0 10 0 0">enter year :</Label>
+                    <TextBox Text="{Binding SelectedItem.StartDate.Year ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="30" Margin="5 10 0 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1 3"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox Text="{Binding SelectedItem.StartDate.Month ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 0 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1 3" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox Text="{Binding SelectedItem.StartDate.Day ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 15 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1 3"/>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+
+                    <Label Foreground="White" FontSize="7" FontFamily="Bookman Old Style" Margin="0 10 0 0">enter Start time :</Label>
+                    <TextBox Text="{Binding SelectedItem.StartTime.Hour ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 0 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1 2" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox Text="{Binding SelectedItem.StartTime.Minute ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 0 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1 2" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBox Text="{Binding SelectedItem.StartTime.Second ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="0 10 5 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1 2" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBlock Text="," Foreground="White" Margin="0 10 0 0"/>
+                    <TextBox Text="{Binding SelectedItem.DurationMinutes ,
+                                   Mode=TwoWay , 
+                                   UpdateSourceTrigger=Default}" Height="20" Width="20" Margin="5 10 49 0" FontSize="7">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border CornerRadius="5" 
+                                       Background="White"
+                                       BorderBrush="{TemplateBinding BorderBrush}"
+                                       BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="5" Opacity="0.2" ShadowDepth="2" Color="White" />
+                                    </Border.Effect>
+                                    <ScrollViewer x:Name="PART_ContentHost" Margin="1 3" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                    <Button Click="Edit" Width="30" Height="15" Margin="5 10 0 10" FontSize="8" FontFamily="Cambria" Background="White" BorderBrush="Black">Edit</Button>
+                    <Button Click="Delete" Width="30" Height="15" Margin="0 10 0 10" FontSize="8" FontFamily="Cambria" Background="White" BorderBrush="Black">Delete</Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="100 15 0 0" Foreground="White" FontSize="7" FontFamily="Centaur">SUN</Label>
+                <Label Margin="45 15 0 0" Foreground="White" FontSize="7" FontFamily="Centaur">MON</Label>
+                <Label Margin="45 15 0 0" Foreground="White" FontSize="7" FontFamily="Centaur">TEU</Label>
+                <Label Margin="45 15 0 0" Foreground="White" FontSize="7" FontFamily="Centaur">WED</Label>
+                <Label Margin="45 15 0 0" Foreground="White" FontSize="7" FontFamily="Centaur">THU</Label>
+                <Label Margin="45 15 0 0" Foreground="White" FontSize="7" FontFamily="Centaur">FRI</Label>
+                <Label Margin="45 15 0 0" Foreground="White" FontSize="7" FontFamily="Centaur">SAT</Label>
+
+            </StackPanel>
+            <ScrollViewer 
+                            ScrollViewer.HorizontalScrollBarVisibility="Hidden" Width="600" HorizontalAlignment="Left" Height="400" VerticalAlignment="Center" Margin="5 50 0 0">
+                <StackPanel>
+
+
+                    <StackPanel  Margin="-560 0 0 0" Width="50">
+                        <Label Margin="20 10 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">1 AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">2AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">3AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">4AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">5AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">6AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">7AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">8AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">9AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">10AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">11AM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">12PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">1PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">2PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">3PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">4PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">5PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">6PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">7PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">8PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">9PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">10PM</Label>
+                        <Label Margin="20 36 0 0"  Foreground="White" FontSize="10" Height="24" Width="50">11PM</Label>
+                        <Label Margin="20 36 0 70" Foreground="White" FontSize="10" Height="24" Width="50">12AM</Label>
+                    </StackPanel>
+                    <StackPanel  Margin="0 -1468 0 0" Orientation="Horizontal">
+                
+                        <ListBox
+                                Margin="70,0,0,0"
+                                FontSize="8"
+                                Width="70"
+                                Background="Black"
+                                Foreground="White"
+                                ItemsSource="{Binding Sunday}"
+                                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                FontFamily="Comic Sans MS">
+                            
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Width="250"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Canvas.Top" Value="{Binding CanvasTop}" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+                            
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Height="{Binding DurationMinutes}" 
+                                            BorderBrush="White" 
+                                            BorderThickness="1" 
+                                            Padding="2">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Title}" 
+                                                   TextWrapping="Wrap" 
+                                                   HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+
+
+                        <ListBox
+                                Margin="0,0,0,0"
+                                FontSize="8"
+                                Width="70"
+                                Background="Black"
+                                Foreground="White"
+                                ItemsSource="{Binding Monday}"
+                                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                FontFamily="Comic Sans MS">
+                            
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Width="250"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Canvas.Top" Value="{Binding CanvasTop}" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+                            
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Height="{Binding DurationMinutes}" 
+                                            BorderBrush="White" 
+                                            BorderThickness="1" 
+                                            Padding="2">
+                                        <TextBlock Text="{Binding Title}" 
+                                               TextWrapping="Wrap" 
+                                               HorizontalAlignment="Center"/>
+                                       
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+
+
+                        <ListBox
+                                Margin="0,0,0,0"
+                                FontSize="8"
+                                Width="70"
+                                Background="Black"
+                                Foreground="White"
+                                ItemsSource="{Binding Tuesday}"
+                                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                FontFamily="Comic Sans MS">
+                            
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Width="250" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Canvas.Top" Value="{Binding CanvasTop}" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+                            
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Height="{Binding DurationMinutes}" 
+                                            BorderBrush="White" 
+                                            BorderThickness="1" 
+                                            Padding="2">
+                                        <TextBlock Text="{Binding Title}" 
+                                               TextWrapping="Wrap" 
+                                               HorizontalAlignment="Center"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+
+                        <ListBox
+                                Margin="0,0,0,0"
+                                FontSize="8"
+                                Width="70"
+                                Background="Black"
+                                Foreground="White"
+                                ItemsSource="{Binding Wednesday}"
+                                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                FontFamily="Comic Sans MS">
+                            
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Width="250"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Canvas.Top" Value="{Binding CanvasTop}" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+                            
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Height="{Binding DurationMinutes}" 
+                                            BorderBrush="White" 
+                                            BorderThickness="1" 
+                                            Padding="2">
+                                        <TextBlock Text="{Binding Title}" 
+                                               TextWrapping="Wrap" 
+                                               HorizontalAlignment="Center"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+
+
+                        <ListBox
+                                Margin="0,0,0,0"
+                                FontSize="8"
+                                Width="70"
+                                Background="Black"
+                                Foreground="White"
+                                ItemsSource="{Binding Thursday}"
+                                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                FontFamily="Comic Sans MS">
+                            
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Width="250"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Canvas.Top" Value="{Binding CanvasTop}" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+                            
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Height="{Binding DurationMinutes}" 
+                                            BorderBrush="White" 
+                                            BorderThickness="1" 
+                                            Padding="2">
+                                        <TextBlock Text="{Binding Title}" 
+                                               TextWrapping="Wrap" 
+                                               HorizontalAlignment="Center"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+
+
+                        <ListBox
+                                Margin="0,0,0,0"
+                                FontSize="8"
+                                Width="70"
+                                Background="Black"
+                                Foreground="White"
+                                ItemsSource="{Binding Friday}"
+                                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                FontFamily="Comic Sans MS">
+                            
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Width="250"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Canvas.Top" Value="{Binding CanvasTop}" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+                            
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Height="{Binding DurationMinutes}" 
+                                            BorderBrush="White" 
+                                            BorderThickness="1" 
+                                            Padding="2">
+                                        <TextBlock Text="{Binding Title}" 
+                                               TextWrapping="Wrap" 
+                                               HorizontalAlignment="Center"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+
+                        <ListBox
+                                Margin="0,0,0,0"
+                                FontSize="8"
+                                Width="70"
+                                Background="Black"
+                                Foreground="White"
+                                ItemsSource="{Binding Saturday}"
+                                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                                FontFamily="Comic Sans MS">
+                            
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Width="250"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+
+                            
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="Canvas.Top" Value="{Binding CanvasTop}" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+
+                            
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Height="{Binding DurationMinutes}" 
+                                            BorderBrush="White" 
+                                            BorderThickness="1" 
+                                            Padding="2">
+                                        <TextBlock Text="{Binding Title}" 
+                                               TextWrapping="Wrap" 
+                                               HorizontalAlignment="Center"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Canvas>
+    </Viewbox>
+</Window>
+    
+    
+    
