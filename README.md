@@ -55,13 +55,13 @@ To open the project locally:
 
 **Requirements:** Windows and Visual Studio with WPF development support.
 
-## 🎓 Purpose
+## 🎓 Academic Information
 
-This project was created for educational purposes as part of a university Advanced Programming course.
-
-## 📄 License
-
-No license has been added to this repository yet.
+- **Course:** Advanced Programming
+- **Academic Level:** Bachelor's Degree — Second Semester
+- **Project Type:** Course Project
+- **Instructor:** Dr. Sauleh Eetemadi 
+- **Project Date:**  ‎March ‎2025
 
 ---
 
